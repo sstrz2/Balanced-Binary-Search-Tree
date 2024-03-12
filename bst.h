@@ -48,7 +48,7 @@ class bst {
 
   private:
 
-/**
+/*
  * function:  insert()
  * desc:      recursive helper function inserting x into
  *            binary search tree rooted  at r.
@@ -92,7 +92,7 @@ class bst {
 
 
   public:
-  /**
+  /*
    * function:  insert
    * desc:      inserts x into BST given by t.  Note that
    *            a BST stores a SET -- no duplicates.  Thus,
@@ -129,7 +129,7 @@ class bst {
       return success;
    }
 
-/**
+/*
  * function:  contains()
  * desc:      returns true or false depending on whether x is an
  *            element of BST (calling object)
@@ -269,13 +269,7 @@ class bst {
       return _max_node(root)->val;
     }
 
-    /******************************************
-     *
-     * "stubs" for assigned TODO functions below 
-     *
-     *****************************************/
-
-    /* TODO
+    /*
      * Function:  to_vector
      * Description:  allocates a vector of type T and populates
      *               it with the elements of the tree in sorted
@@ -305,15 +299,12 @@ class bst {
     }
 
 
-    /* TODO
+    /*
      * Function:  get_ith
      * Description:  determines the ith smallest element in t and
      *    "passes it back" to the caller via the reference parameter x.  
      *    i ranges from 1..n where n is the number of elements in the 
      *    tree.
-     *
-     *    If i is outside this range, false is returned.
-     *    Otherwise, true is returned (indicating "success").
      *
      * Runtime:  O(h) where h is the tree height
      */
@@ -357,8 +348,6 @@ class bst {
     /* 
      * get_ith_SLOW:  slow version of get_ith which gives the right answer, but
      *   does so by "walking the entire tree".
-     * might be helpful for debugging?
-     * Private helper below does most of the work
      */
     bool get_ith_SLOW(int i, T &x) {
       int n = size();
@@ -390,7 +379,7 @@ class bst {
 
   public:
 
-    /* TODO
+    /* 
      * Function: position_of 
      * Description:  this is like the inverse of
      *       get_ith:  given a value x, determine the 
@@ -398,27 +387,6 @@ class bst {
      *       sorted list of the elements and return
      *       the position as an integer.
      *       If x is not in the tree, -1 is returned.
-     *       Examples:
-     *           if x happens to be the minimum, 1 is returned
-     *           if x happens to be the maximum, n is returned where
-     *               n is the tree size.                  
-     *                  
-     *       Notice the following property:  for a bst t with n nodes,                  
-     *           pick an integer pos:1 <= pos <= n.                  
-     *           Now consider the following:
-     *       
-                    T x;
-                    int pos, pos2;
-                    // set pos to a value in {1..n}
-                    t.get_ith(pos, x);  // must return true since pos is in {1..n}
-
-                    // now let's find the position of x (just retrieved) 
-                    pos2 = t.position_of(x);
-                    if(pos != pos2) {
-                        std::cout << "THERE MUST BE A BUG!\n";
-                    }
-
-                 See how position_of performs the inverse operation of get_ith?
      *       
      * Return:  -1 if x is not in the tree; otherwise, returns the position where x 
      *          would appear in the sorted sequence of the elements of the tree (a
@@ -455,7 +423,7 @@ class bst {
 
     }
 
-    /* TODO
+    /* 
      * Function:  num_geq
      * Description:  returns the number of elements in tree which are 
      *       greater than or equal to x.
@@ -505,7 +473,7 @@ class bst {
     
   public:
 
-    /* TODO
+    /*
      * Function:  num_leq
      * Description:  returns the number of elements in tree which are less
      *      than or equal to x.
@@ -556,7 +524,7 @@ class bst {
 
   public:
 
-    /* TODO
+    /*
      * Function:  num_range
      * Description:  returns the number of elements in tree which are
      *       between min and max (inclusive).
@@ -596,18 +564,12 @@ class bst {
   public:
 
     /*
-     * TODO
      * function:     extract_range
      * Description:  allocates a vector of element type T
      *               and populates it with the tree elements
      *               between min and max (inclusive) in order.  
      *               A pointer to the allocated and populated
      *               is returned.
-     *
-     * notes/comments:  even if the specified range is empty, a
-     *                  vector is still allocated and returned;
-     *                  that vector just happens to be empty.
-     *                  (The function NEVER returns nullptr).
      *
      * runtime:  the runtime requirement is "output dependent".
      *           Let k be the number of elements in the specified range
@@ -616,8 +578,6 @@ class bst {
      *
      *                  O(h + k)
      *
-     *           So...while k can be as large as n, it can be as small
-     *           as zero.  
      *
      */
     vector<T> * extract_range(const T & min, const T & max) {
@@ -640,12 +600,6 @@ class bst {
         _extract_range(node->right,min,max,vec);
       }
     }
-
-  /***************************************************
-  *  PREORDER AND INORDER TREE TRAVERSALS BELOW      * 
-  *                                                  * 
-  ***************************************************/
-
   private:
     static void indent(int m){
       int i;
@@ -689,17 +643,7 @@ class bst {
 
     }
 
-  /***************************************************
-  *  END PREORDER AND INORDER TREE TRAVERSALS        * 
-  *                                                  * 
-  ***************************************************/
-
   private:
-    /* 
-     * Recursive  helper function _from_vec, used by
-     * from_sorted_arr(...). The function must return a sub-tree that is
-     * perfectly balanced, given a sorted array of elements a.
-     */
     static bst_node * _from_vec(const std::vector<T> &a, int low, int hi){
       int m;
       bst_node *root;
@@ -723,10 +667,6 @@ class bst {
     }
 
   private:
-
-    /*
-     * DO NOT MODIFY THE TWO FUNCTIONS BELOW!!!
-     */
     static void _to_preorder_vec(bst_node *t, std::vector<T> &vec) {
       if(t==nullptr) return;
       vec.push_back(t->val);
@@ -739,9 +679,6 @@ class bst {
       return vec;
     }
 
-  /*
-   * Finally, the data members of the bst class
-   */
   private:
     bst_node *root;
 
